@@ -1,0 +1,7 @@
+# Bibliotecas necessarias no Wokwi (aba "Library Manager" do projeto).
+# O Wokwi resolve automaticamente a partir destes nomes.
+
+DHT sensor library
+Adafruit Unified Sensor
+PubSubClient
+ArduinoJson
