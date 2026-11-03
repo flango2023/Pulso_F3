@@ -9,3 +9,7 @@ node_modules/
 
 # Sistema
 .DS_Store
+
+# Pasta original de capturas (os prints versionados ficam em assets/)
+Screenshots/
+Screenshots */

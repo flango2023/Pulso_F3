@@ -183,11 +183,37 @@ Detalhes completos e o cálculo de dimensionamento do buffer em
 
 ### Link do projeto no Wokwi
 
-> **Projeto no Wokwi:** LINK_DO_WOKWI_AQUI
+> **Projeto no Wokwi:** https://wokwi.com/projects/479698369212437505
 
 Para rodar no Wokwi: criar um projeto ESP32, colar `src/pulso_band.ino` como
 `sketch.ino`, colar `wokwi/diagram.json` como `diagram.json` e instalar as
 bibliotecas listadas em `wokwi/libraries.txt`.
+
+### Evidências de execução
+
+**Circuito e código no Wokwi** — ESP32 + DHT22 (GPIO 15) + botão (GPIO 4), simulação em execução:
+
+<p align="center">
+  <img src="assets/01_wokwi_codigo_circuito.png" alt="Pulso Band no Wokwi — código e circuito" width="90%">
+</p>
+
+**Conexões (diagram.json) e pinos do ESP32:**
+
+<p align="center">
+  <img src="assets/03_wokwi_diagram_conexoes.png" alt="Conexões do circuito no Wokwi" width="90%">
+</p>
+
+**Bibliotecas instaladas** (DHT sensor library, Adafruit Unified Sensor, PubSubClient, ArduinoJson):
+
+<p align="center">
+  <img src="assets/02_wokwi_bibliotecas.png" alt="Bibliotecas instaladas no Wokwi" width="90%">
+</p>
+
+**Tráfego de rede Wi-Fi na simulação** (o ESP32 transmitindo dados):
+
+<p align="center">
+  <img src="assets/04_wokwi_wifi_trafego.png" alt="Tráfego Wi-Fi na simulação Wokwi" width="90%">
+</p>
 
 ---
 
@@ -218,6 +244,16 @@ node-red                       # http://localhost:1880  (dashboard em /ui)
 Depois, instalar `node-red-dashboard` em *Manage palette* e importar
 `node-red/flow.json`. O flow já aponta para o broker público `broker.hivemq.com`,
 sem credenciais a preencher.
+
+### Evidência de execução — fluxo Node-RED conectado ao broker
+
+O flow importado, com o nó MQTT em estado **connected** ao broker HiveMQ público,
+o parse do JSON e os três widgets do dashboard (gráfico de bpm, gauge de
+temperatura e indicador de alerta):
+
+<p align="center">
+  <img src="assets/05_nodered_flow_mqtt.png" alt="Fluxo Node-RED conectado ao broker MQTT" width="90%">
+</p>
 
 Detalhes do protocolo MQTT, QoS, segurança e configuração do dashboard em
 [`docs/relatorio_parte2_mqtt.md`](docs/relatorio_parte2_mqtt.md).
@@ -279,7 +315,8 @@ destacado na avaliação da Fase 2):
 | Relatórios | Sim | — |
 | Buffer de resiliência | — | RAM do ESP32 (runtime) |
 | Broker MQTT | `broker.hivemq.com` (público, no código) | Conexão estabelecida em runtime |
-| Prints do dashboard e broker | Adicionados após execução | Capturados na simulação |
+| Prints do Wokwi e Node-RED (`assets/`) | Sim | Capturados durante a execução real |
+| Link do projeto no Wokwi | Sim (no README) | — |
 
 Nenhum componente desta fase deve ser utilizado para monitoramento clínico real.
 
