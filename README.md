@@ -255,8 +255,10 @@ temperatura e indicador de alerta):
 </p>
 
 **Dashboard em funcionamento** (`localhost:1880/ui`) — com o gráfico de batimentos,
-o gauge de temperatura (24 °C) e o indicador de status exibindo "Normal: 0 bpm / 24 C"
-a partir dos dados reais recebidos do ESP32 via MQTT:
+o gauge de temperatura e o indicador de status. Neste instante a temperatura é de
+41,9 °C, acima do limite de 37,8 °C: o gauge entra na faixa vermelha e o status
+exibe "ALERTA: 36 bpm / 41,9 C", demonstrando o disparo automático de alerta a
+partir dos dados reais recebidos do ESP32 via MQTT:
 
 <p align="center">
   <img src="assets/06_dashboard_ui_funcionando.png" alt="Dashboard Pulso Band em funcionamento" width="70%">
