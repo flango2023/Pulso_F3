@@ -38,9 +38,9 @@ Esta é a Fase 3: o **Pulso Band**, um dispositivo vestível simulado que captur
 
 A Fase 3 materializa o eixo de wearable/IoT que vinha sendo preparado desde o início:
 
-- Na **Fase 1**, o dataset foi documentado pensando em monitoramento contínuo, e variáveis como a frequência cardíaca (`thalach` do UCI Cleveland) já apontavam para sinais que um wearable capturaria.
-- Na **Fase 2**, o diagnóstico assistido por IA trabalhou sobre dados estáticos. Agora, o Pulso Band gera o fluxo de dados **em tempo real** que, nas fases seguintes, alimentará os modelos preditivos de séries temporais (Fase 6).
-- O **Pulso Band** é o dispositivo físico (simulado) que fecha a ponte entre o paciente e a plataforma: é a origem dos sinais vitais que todo o ecossistema CardioIA consome.
+- Na **Fase 1**, o dataset foi documentado com foco no monitoramento contínuo, e variáveis como a frequência cardíaca (`thalach` do UCI Cleveland) já indicavam sinais que um wearable capturaria.
+- Na **Fase 2**, o diagnóstico assistido por IA utilizou dados estáticos. Agora, o Pulso Band gera o fluxo de dados **em tempo real** que, nas fases seguintes, alimentará os modelos preditivos de séries temporais (Fase 6).
+- O **Pulso Band** é o dispositivo físico (simulado) que faz a ponte entre o paciente e a plataforma: é a origem dos sinais vitais que todo o ecossistema CardioIA consome.
 
 ---
 
@@ -48,7 +48,41 @@ A Fase 3 materializa o eixo de wearable/IoT que vinha sendo preparado desde o in
 
 O Pulso é construído em torno de uma questão de governança em saúde: **tecnologia de monitoramento só tem valor clínico se for confiável quando mais importa** — ou seja, fora do hospital, em deslocamento, sem conexão garantida.
 
-Por isso, a Fase 3 trata resiliência offline, segurança na transmissão e limites de alerta clinicamente justificados não como detalhes técnicos, mas como requisitos de responsabilidade. Um wearable cardíaco que perde dados quando a rede cai, ou que dispara alertas arbitrários, não é um produto de saúde — é um risco.
+Por isso, a Fase 3 trata da resiliência offline, da segurança na transmissão e de limites de alerta clinicamente justificados não como detalhes técnicos, mas como requisitos de responsabilidade. Um wearable cardíaco que perde dados quando a rede cai, ou que dispara alertas arbitrários, não é um produto de saúde — é um risco.
+
+---
+---
+
+## Estrutura do repositório
+
+```
+Pulso_F3/
+│
+├── README.md
+│
+├── src/
+│   └── pulso_band.ino              ← Firmware do ESP32 (C++ comentado)
+│
+├── wokwi/
+│   ├── diagram.json                ← Circuito: ESP32 + DHT22 + botão
+│   └── libraries.txt               ← Bibliotecas a instalar no Wokwi
+│
+├── node-red/
+│   └── flow.json                   ← Dashboard (importar no Node-RED)
+│
+├── iralem1/
+│   ├── pulso_api.py                ← API REST (Flask)
+│   ├── pulso_client.py             ← Cliente REST + risco + e-mail
+│   └── requirements.txt            ← Dependências Python
+│
+├── docs/
+│   ├── relatorio_parte1_edge.md    ← Relatório Edge Computing (mín. 1 pg)
+│   ├── relatorio_parte2_mqtt.md    ← Relatório MQTT + dashboard (mín. 2 pg)
+│   └── relatorio_iralem1_rest.md   ← Relatório Ir Além 1 (1–2 pg)
+│
+└── assets/
+    └── (prints do Wokwi, dashboard e broker — adicionados após execução)
+```
 
 ---
 
@@ -125,40 +159,6 @@ sequenceDiagram
     end
 ```
 
----
-
-## Estrutura do repositório
-
-```
-Pulso_F3/
-│
-├── README.md
-│
-├── src/
-│   └── pulso_band.ino              ← Firmware do ESP32 (C++ comentado)
-│
-├── wokwi/
-│   ├── diagram.json                ← Circuito: ESP32 + DHT22 + botão
-│   └── libraries.txt               ← Bibliotecas a instalar no Wokwi
-│
-├── node-red/
-│   └── flow.json                   ← Dashboard (importar no Node-RED)
-│
-├── iralem1/
-│   ├── pulso_api.py                ← API REST (Flask)
-│   ├── pulso_client.py             ← Cliente REST + risco + e-mail
-│   └── requirements.txt            ← Dependências Python
-│
-├── docs/
-│   ├── relatorio_parte1_edge.md    ← Relatório Edge Computing (mín. 1 pg)
-│   ├── relatorio_parte2_mqtt.md    ← Relatório MQTT + dashboard (mín. 2 pg)
-│   └── relatorio_iralem1_rest.md   ← Relatório Ir Além 1 (1–2 pg)
-│
-└── assets/
-    └── (prints do Wokwi, dashboard e broker — adicionados após execução)
-```
-
----
 
 ## Parte 1 — Armazenamento e processamento local (Edge Computing)
 
