@@ -80,7 +80,7 @@ Pulso_F3/
 │   └── relatorio_iralem1_rest.md   ← Relatório Ir Além 1 (1–2 pg)
 │
 └── assets/
-    └── (prints do Wokwi, dashboard e broker — adicionados após execução)
+    └── (prints do Wokwi, do dashboard Node-RED e das configurações)
 ```
 
 ---
@@ -148,7 +148,7 @@ sequenceDiagram
     S->>E: temperatura, umidade, batidas
     E->>E: calcula bpm + avalia alerta
     alt Online
-        E->>B: publish telemetria (MQTT/TLS)
+        E->>B: publish telemetria (MQTT 1883)
         B->>N: entrega mensagem
         N->>N: gráfico + gauge + alerta
     else Offline
@@ -310,7 +310,7 @@ python pulso_client.py
 
 O envio de e-mail opera em modo simulação por padrão (`MODO_SIMULACAO = True`),
 imprimindo a mensagem no console — reproduzível sem credenciais. O modo real via
-SMPT/TLS está implementado e documentado.
+SMTP/TLS está implementado e documentado.
 
 Os cinco cenários testados (estável, taquicardia, febre, ausência de movimento,
 bradicardia) acionaram a lógica corretamente. Detalhes em

@@ -170,14 +170,14 @@ conteúdo). O fluxo é composto por:
 sequenceDiagram
     participant S as Sensores (DHT22 + botão)
     participant E as ESP32 (Pulso Band)
-    participant B as HiveMQ Cloud
+    participant B as broker.hivemq.com
     participant N as Node-RED
     participant D as Dashboard
 
     S->>E: temperatura, umidade, batidas
     E->>E: calcula bpm e avalia alerta
     alt online
-        E->>B: publish telemetria (MQTT/TLS)
+        E->>B: publish telemetria (MQTT 1883)
         B->>N: entrega mensagem (subscribe)
         N->>N: parse + extrai bpm/temp + avalia alerta
         N->>D: atualiza gráfico, gauge e status
