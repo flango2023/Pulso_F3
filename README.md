@@ -255,6 +255,38 @@ temperatura e indicador de alerta):
   <img src="assets/05_nodered_flow_mqtt.png" alt="Fluxo Node-RED conectado ao broker MQTT" width="90%">
 </p>
 
+**Dashboard em funcionamento** (`localhost:1880/ui`) — com o gráfico de batimentos,
+o gauge de temperatura (24 °C) e o indicador de status exibindo "Normal: 0 bpm / 24 C"
+a partir dos dados reais recebidos do ESP32 via MQTT:
+
+<p align="center">
+  <img src="assets/06_dashboard_ui_funcionando.png" alt="Dashboard Pulso Band em funcionamento" width="70%">
+</p>
+
+**Leitura do DHT22 no Wokwi** — valores de temperatura (24 °C) e umidade (40%)
+ajustáveis durante a simulação:
+
+<p align="center">
+  <img src="assets/07_wokwi_dht22_leitura.png" alt="Leitura do DHT22 no Wokwi" width="90%">
+</p>
+
+<details>
+<summary>Configuração dos widgets do dashboard (chart e gauge)</summary>
+
+Gráfico de batimentos (line chart, eixo Y 0–200 bpm):
+
+<p align="center">
+  <img src="assets/08_nodered_config_chart.png" alt="Configuração do gráfico de bpm" width="85%">
+</p>
+
+Gauge de temperatura (faixa 30–45 °C, setores verde/amarelo/vermelho a partir de 37,8 °C):
+
+<p align="center">
+  <img src="assets/09_nodered_config_gauge.png" alt="Configuração do gauge de temperatura" width="85%">
+</p>
+
+</details>
+
 Detalhes do protocolo MQTT, QoS, segurança e configuração do dashboard em
 [`docs/relatorio_parte2_mqtt.md`](docs/relatorio_parte2_mqtt.md).
 
