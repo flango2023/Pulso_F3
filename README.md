@@ -19,7 +19,7 @@
 
 ## Vídeo de demonstração
 
-> **[Demonstração completa - Fase 3](LINK_DO_VIDEO_AQUI)**
+> **[Demonstração completa - Fase 3](https://www.youtube.com/watch?v=KKVExt5zhWo)**
 > Postado no YouTube como "não listado". Demonstra o Pulso Band no Wokwi, o fluxo MQTT até o broker público do HiveMQ, o dashboard no Node-RED e a automação REST + e-mail.
 
 
